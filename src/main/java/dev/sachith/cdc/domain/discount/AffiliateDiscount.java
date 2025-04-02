@@ -1,13 +1,15 @@
-package dev.sachith.cdc.processor.discount.impl;
+package dev.sachith.cdc.domain.discount;
 
 
 import dev.sachith.cdc.domain.vo.Item;
-import dev.sachith.cdc.dto.UserDto;
-import dev.sachith.cdc.processor.discount.PercentageDiscount;
+import dev.sachith.cdc.domain.dto.UserDto;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author sachith
+ */
 @Component
-public class AffiliateDiscount extends PercentageDiscount {
+class AffiliateDiscount extends PercentageDiscount {
 
     @Override
     public boolean checkEligibility(UserDto user, Item item) {
