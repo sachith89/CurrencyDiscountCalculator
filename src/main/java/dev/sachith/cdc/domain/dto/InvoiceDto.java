@@ -1,4 +1,4 @@
-package dev.sachith.cdc.dto;
+package dev.sachith.cdc.domain.dto;
 
 import dev.sachith.cdc.domain.vo.Item;
 import jakarta.validation.Valid;
