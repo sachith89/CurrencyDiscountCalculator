@@ -23,6 +23,64 @@ This Spring Boot application integrates with a third-party currency exchange API
 
 ---
 
+```mermaid
+classDiagram
+direction BT
+    class AffiliateDiscount {
+	    + checkEligibility(UserDto, Item) boolean
+    }
+
+    class CustomerDiscount {
+	    + checkEligibility(UserDto, Item) boolean
+    }
+
+    class Discount {
+	    + checkEligibility(UserDto, Item) boolean
+    }
+
+    class DiscountCalculateService {
+	    + calculate(ShoppingCartEntity) InvoiceDto
+	    + applyDiscount(Item, UserDto) void
+    }
+
+    class DiscountCalculateServiceImpl {
+	    + calculate(ShoppingCartEntity) InvoiceDto
+	    + applyDiscount(Item, UserDto) void
+    }
+
+    class EmployeeDiscount {
+	    + checkEligibility(UserDto, Item) boolean
+    }
+
+    class FlatDiscount {
+    }
+
+    class FlatFiveForHundredBillDiscount {
+	    + checkEligibility(UserDto, Item) boolean
+    }
+
+    class PercentageDiscount {
+    }
+
+	<<Interface>> DiscountCalculateService
+
+    AffiliateDiscount --> PercentageDiscount
+    CustomerDiscount --> PercentageDiscount
+    DiscountCalculateServiceImpl ..> DiscountCalculateService
+    EmployeeDiscount --> PercentageDiscount
+    FlatDiscount --> Discount
+    FlatFiveForHundredBillDiscount --> FlatDiscount
+    PercentageDiscount --> Discount
+
+	class Discount:::Peach
+	class DiscountCalculateService:::Ash
+	class FlatDiscount:::Sky
+	class PercentageDiscount:::Sky
+
+```
+
+---
+
 ## ⚙️ Setup Instructions
 1. **Clone the Repository:**
 ```bash
