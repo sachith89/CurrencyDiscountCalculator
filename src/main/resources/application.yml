@@ -1,0 +1,3 @@
+cdc:
+  open-exchange:
+    url: https://openexchangerates.org
