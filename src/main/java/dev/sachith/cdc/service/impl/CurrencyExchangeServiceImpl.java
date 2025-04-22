@@ -4,7 +4,6 @@ import dev.sachith.cdc.domain.vo.ExchangeRates;
 import dev.sachith.cdc.service.CurrencyExchangeService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 /**
  * @author sachith
@@ -19,13 +18,14 @@ class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
     }
 
     @Override
-    public Mono<ExchangeRates> getAllData() {
+    public ExchangeRates getAllData(String apiKey) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/api/latest.json")
-                        .queryParam("app_id", "726e253850b74d9eb56cfd7f7c3fde4c")
+                        .queryParam("app_id", apiKey)
                         .queryParam("base", "USD").build())
                 .retrieve()
-                .bodyToMono(ExchangeRates.class);
+                .bodyToMono(ExchangeRates.class)
+                .block();
     }
 
 }

@@ -8,5 +8,5 @@ import dev.sachith.cdc.domain.dto.InvoiceDto;
  */
 public interface ShoppingCartService {
 
-    InvoiceDto generateInvoice(ShoppingCartEntity shoppingCartEntity);
+    InvoiceDto generateInvoice(ShoppingCartEntity shoppingCartEntity, String apiKey);
 }
